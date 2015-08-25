@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+<form method = 'PUT' action = '/items/{{item.id}}'>
+
+  <br>
+  <input name = 'foodName' value = {{item.name}}>
+  <br>
+  <input type = 'submit'>
+
+</form>
+
+{% endblock %}
