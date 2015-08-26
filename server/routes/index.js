@@ -11,13 +11,14 @@ router.get('/items', function(req, res){
 });
 
 router.get('/items/:id', function(req, res){
-   res.json(storage.items[req.params.id]);
+   var response = utilities.getID(parseInt(req.params.id), storage.items);
+   res.json(response);
 });
 
-router.get('/items/:id/edit', function(req, res){
-  var item = storage.items[req.params.id];
-  res.render('edit', {item: item});
-});
+// router.get('/items/:id/edit', function(req, res){
+//   var item = storage.items[req.params.id];
+//   res.render('edit', {item: item});
+// });
 
 router.post('/items', function(req, res){
   storage.addItem(req.body.name);
@@ -25,10 +26,8 @@ router.post('/items', function(req, res){
 });
 
 router.put('/items/:id', function(req, res){
-  console.log(req.body.name);
-  var index = req.params.id;
-  storage.items[index].name =req.body.name;
-  res.json(storage);
+  var response = utilities.putID(parseInt(req.params.id), storage.items, req.body.name);
+  res.json(response);
 });
 
 router.delete('/items/:id', function(req, res, next){

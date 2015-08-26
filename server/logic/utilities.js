@@ -2,17 +2,20 @@
 
 function getID(ID, array){
   for (var i = 0; i < array.length; i++) {
-    if(array[i] !== ID){
-      return ({
-        message : 'doesn\'t exist bro!'
-      });
-    } else {
-      return ({
-        message : 'this is fine',
-
-      });
+    if(array[i].id === ID){
+      return array[ID];
+     }
     }
-  }
+    return 'doesn\'t exist bro!';
+}
+
+function putID(ID, array, name){
+  for (var i = 0; i < array.length; i++) {
+    if(array[i].id === ID){
+      array[ID].name = name;
+      return array;
+    }
+  } return 'That ID\'s not here bro!';
 }
 
 function deleteID(ID, arrayItems, array){
@@ -35,4 +38,6 @@ function deleteID(ID, arrayItems, array){
 
 module.exports = {
   deleteID : deleteID,
+  getID: getID,
+  putID: putID,
 };
