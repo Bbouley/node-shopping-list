@@ -18,6 +18,16 @@ function putID(ID, array, name){
   } return 'That ID\'s not here bro!';
 }
 
+function postID(array, name){
+  for (var i = 0; i < array.items.length; i++) {
+    if(array.items[i].name === name){
+      return 'That\'s already here!!!';
+    }
+  }
+  array.addItem(name);
+  return array;
+}
+
 function deleteID(ID, arrayItems, array){
   for (var i = 0; i < arrayItems.length; i++) {
     if(arrayItems[i].id === ID){
@@ -40,4 +50,5 @@ module.exports = {
   deleteID : deleteID,
   getID: getID,
   putID: putID,
+  postID: postID,
 };

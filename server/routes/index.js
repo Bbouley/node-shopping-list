@@ -21,8 +21,8 @@ router.get('/items/:id', function(req, res){
 // });
 
 router.post('/items', function(req, res){
-  storage.addItem(req.body.name);
-  res.json(storage);
+  var response = utilities.postID(storage, req.body.name);
+  res.json(response);
 });
 
 router.put('/items/:id', function(req, res){
@@ -31,7 +31,6 @@ router.put('/items/:id', function(req, res){
 });
 
 router.delete('/items/:id', function(req, res, next){
-  console.log(req.params.id);
  var response = utilities.deleteID(parseInt(req.params.id), storage.items, storage);
   res.json(response);
 });
