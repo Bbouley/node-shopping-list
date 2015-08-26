@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var methodOverride =require('method-override');
 var app = express();
+var utilities = require('../logic/utilities.js');
 
 app.use(methodOverride('_method'));
 
@@ -31,13 +32,9 @@ router.put('/items/:id', function(req, res){
 });
 
 router.delete('/items/:id', function(req, res, next){
-  console.log('testing delete route');
-  for (var i = 0; i < storage.items.length; i++) {
-    if(storage.items[i].id === parseInt(req.params.id)){
-      storage.items.splice(i, 1);
-    }
-  }
-  res.json(storage);
+  console.log(req.params.id);
+ var response = utilities.deleteID(parseInt(req.params.id), storage.items, storage);
+  res.json(response);
 });
 
 
