@@ -1,16 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var methodOverride =require('method-override');
 var app = express();
 var utilities = require('../logic/utilities.js');
 
-app.use(methodOverride('_method'));
+
 
 router.get('/items', function(req, res){
   res.json(storage.items);
 });
 
-router.get('/items/:id', function(req, res){
+router.get('/item/:id', function(req, res){
    var response = utilities.getID(parseInt(req.params.id), storage.items);
    res.json(response);
 });
@@ -25,12 +24,12 @@ router.post('/items', function(req, res){
   res.json(response);
 });
 
-router.put('/items/:id', function(req, res){
+router.put('/item/:id', function(req, res){
   var response = utilities.putID(parseInt(req.params.id), storage.items, req.body.name);
   res.json(response);
 });
 
-router.delete('/items/:id', function(req, res, next){
+router.delete('/item/:id', function(req, res, next){
  var response = utilities.deleteID(parseInt(req.params.id), storage.items, storage);
   res.json(response);
 });
