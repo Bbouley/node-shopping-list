@@ -27,7 +27,6 @@ router.put('/items/:id', function(req, res){
   console.log(req.body.name);
   var index = req.params.id;
   storage.items[index].name =req.body.name;
-  // res.redirect('/items/:' + req.params.id );
   res.json(storage);
 });
 
